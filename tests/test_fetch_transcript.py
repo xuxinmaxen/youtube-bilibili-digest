@@ -1,6 +1,7 @@
 """Offline behavior tests: no platform requests, package installs or model downloads."""
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -171,15 +172,22 @@ class AudioAndCliTests(unittest.TestCase):
 
     def test_cli_failure_is_json_and_exit_two(self):
         result = subprocess.run([sys.executable, str(SCRIPT), 'https://x.com/user/status/123'],
-                                capture_output=True, text=True)
+                                capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(result.returncode, 2)
         self.assertEqual(json.loads(result.stdout)['segments'], [])
+
+    def test_cli_json_is_utf8_even_with_legacy_console_encoding(self):
+        result = subprocess.run([sys.executable, str(SCRIPT), 'https://example.com/'],
+                                env={**os.environ, 'PYTHONIOENCODING': 'cp1252'},
+                                capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertIn('请提供', json.loads(result.stdout)['error'])
 
     def test_cli_output_writes_json_and_prints_path(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / 'out.json'
             result = subprocess.run([sys.executable, str(SCRIPT), 'https://example.com/', '--output', str(output)],
-                                    capture_output=True, text=True)
+                                    capture_output=True, text=True, encoding='utf-8')
             self.assertEqual(result.returncode, 2)
             self.assertEqual(result.stdout.strip(), str(output))
             self.assertIn('error', json.loads(output.read_text(encoding='utf-8')))

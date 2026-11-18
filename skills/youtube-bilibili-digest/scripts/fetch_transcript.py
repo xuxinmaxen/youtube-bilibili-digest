@@ -11,6 +11,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import urllib.parse
 import urllib.request
@@ -567,6 +568,9 @@ def fetch(url: str) -> dict[str, Any]:
 
 
 def main() -> int:
+    # JSON is always UTF-8, including when stdout is redirected on Windows.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Fetch public captions from YouTube or Bilibili")
     parser.add_argument("url")
     parser.add_argument("--output", help="Write JSON to a file instead of stdout")

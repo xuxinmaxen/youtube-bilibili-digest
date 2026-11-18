@@ -4,7 +4,7 @@ Public release: **1.0.0**. Recorded on **2026-11-17**.
 
 ## Automated, offline
 
-19 behavior tests run with Python's standard-library `unittest`:
+20 behavior tests run with Python's standard-library `unittest`:
 
 - YouTube JSON3, Bilibili JSON, XML, VTT and SRT parsing.
 - Millisecond/hour timestamps, text cleaning, ordering and nearby duplicate/progressive cues.
@@ -14,7 +14,7 @@ Public release: **1.0.0**. Recorded on **2026-11-17**.
 - Metadata preservation and actionable failure diagnostics.
 - Selected Bilibili part/CID routing and out-of-range rejection without retrying another part.
 - Temporary audio directory cleanup after both success and a handled transcription failure.
-- CLI failure JSON/exit code and `--output` file behavior.
+- CLI failure JSON/exit code, `--output` file behavior and UTF-8 output under a legacy console encoding.
 
 CI runs those tests on Ubuntu, macOS and Windows with Python 3.10 and 3.12. It does not run MLX or contact live video platforms.
 
