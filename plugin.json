@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "youtube-bilibili-digest",
+  "version": "1.0.0",
+  "description": "Transcript-backed YouTube and Bilibili summaries with source timestamps, evidence quotes and local transcription fallback.",
+  "author": {"name": "maxen", "url": "https://github.com/xuxinmaxen"},
+  "homepage": "https://github.com/xuxinmaxen/youtube-bilibili-digest#readme",
+  "repository": "https://github.com/xuxinmaxen/youtube-bilibili-digest",
+  "license": "MIT",
+  "keywords": ["agent-skill", "youtube", "bilibili", "video-summary", "transcript", "codex", "claude-code"]
+}

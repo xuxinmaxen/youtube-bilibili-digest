@@ -1,0 +1,34 @@
+name: Bug report / 问题反馈
+description: Report a caption, transcription or installation problem.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please remove private URLs, full transcripts, cookies and credentials before submitting. 请勿提交凭据或私人视频内容。"
+  - type: input
+    id: environment
+    attributes:
+      label: Environment / 环境
+      description: OS, CPU architecture, Python version, agent/client.
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Failing stage / 失败阶段
+      options:
+        - Installation / 安装
+        - Direct captions / 公开字幕
+        - yt-dlp captions / 备用字幕
+        - Audio extraction / 音频提取
+        - MLX transcription / 本机转录
+        - Summary or timestamps / 总结与时间戳
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Reproduction and sanitized error / 复现步骤与脱敏报错
+      description: Expected result, actual result, and a public URL only if appropriate.
+    validations:
+      required: true

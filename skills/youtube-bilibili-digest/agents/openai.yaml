@@ -1,0 +1,5 @@
+interface:
+  display_name: "视频摘要"
+  short_description: "粘贴 YouTube 或 Bilibili 链接，生成带时间点的中文总结"
+  default_prompt: "使用 $youtube-bilibili-digest 总结这个视频并列出带时间戳的重点观点："
+  brand_color: "#E11D48"

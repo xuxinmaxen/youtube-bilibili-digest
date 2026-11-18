@@ -1,0 +1,14 @@
+name: Feature request / 功能建议
+description: Describe the user task you want to complete.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do? / 你想完成什么？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 期望行为
+      description: Include platform, constraints and an example prompt if useful.
